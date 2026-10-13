@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Business & Society • Unit 44: The World of Work</title>
+    <style>
+        :root {
+            --bg-color: #0b1120;
+            --card-bg: #161f30;
+            --subcard-bg: #1e293b;
+            --border-color: #334155;
+            --text-main: #cbd5e1;
+            --text-bright: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-blue: #38bdf8;
+            --accent-cyan: #22d3ee;
+            --accent-purple: #c084fc;
+            --accent-amber: #f59e0b;
+            --accent-emerald: #3fb950;
+            --accent-crimson: #f85149;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .header-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 34px 24px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-blue), var(--accent-purple));
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: rgba(56, 189, 248, 0.15);
+            color: var(--accent-blue);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 20px;
+            margin-bottom: 14px;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+        }
+
+        .header-card h1 {
+            color: var(--text-bright);
+            font-size: 2.1rem;
+            margin-bottom: 8px;
+        }
+
+        .header-card p {
+            color: var(--text-muted);
+            font-size: 0.98rem;
+        }
+
+        .section-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px;
+        }
+
+        .svg-icon {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+            color: var(--accent-cyan);
+            flex-shrink: 0;
+        }
+
+        .section-title {
+            color: var(--accent-cyan);
+            font-size: 1.35rem;
+            font-weight: 700;
+        }
+
+        .exercise {
+            background-color: var(--subcard-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .exercise-title {
+            color: var(--text-bright);
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .instruction {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+        }
+
+        .instruction em {
+            color: var(--accent-amber);
+            font-style: normal;
+        }
+
+        ul, ol {
+            padding-left: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        li {
+            font-size: 0.95rem;
+        }
+
+        .vocab-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .vocab-table th, .vocab-table td {
+            text-align: left;
+            padding: 10px 14px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.93rem;
+        }
+
+        .vocab-table th {
+            color: var(--accent-blue);
+            background-color: rgba(56, 189, 248, 0.08);
+            font-weight: 600;
+        }
+
+        .vocab-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .word {
+            font-weight: 600;
+            color: var(--text-bright);
+        }
+
+        .text-box {
+            background-color: #0f172a;
+            border-left: 4px solid var(--accent-blue);
+            padding: 18px;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
+
+        .text-box p {
+            margin-bottom: 12px;
+        }
+
+        .text-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .theory-box {
+            background: rgba(192, 132, 252, 0.07);
+            border: 1px solid rgba(192, 132, 252, 0.3);
+            border-radius: 8px;
+            padding: 18px;
+            margin-bottom: 10px;
+        }
+
+        .theory-box h4 {
+            color: #d8b4fe;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        input[type="text"] {
+            background-color: #0b1120;
+            border: 1px solid var(--border-color);
+            color: #f8fafc;
+            padding: 6px 12px;
+            border-radius: 5px;
+            font-size: 0.92rem;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        input[type="text"]:focus {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.15);
+        }
+
+        input[type="text"].correct {
+            border-color: var(--accent-emerald) !important;
+            background-color: rgba(63, 185, 80, 0.12) !important;
+        }
+
+        input[type="text"].incorrect {
+            border-color: var(--accent-crimson) !important;
+            background-color: rgba(248, 81, 73, 0.12) !important;
+        }
+
+        textarea {
+            width: 100%;
+            background-color: #0b1120;
+            border: 1px solid var(--border-color);
+            color: #f8fafc;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 0.93rem;
+            font-family: inherit;
+            outline: none;
+            resize: vertical;
+            min-height: 100px;
+            line-height: 1.6;
+        }
+
+        textarea:focus {
+            border-color: var(--accent-cyan);
+        }
+
+        .btn-check {
+            align-self: flex-start;
+            background-color: #1e293b;
+            color: var(--text-bright);
+            border: 1px solid var(--border-color);
+            padding: 8px 18px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 4px;
+        }
+
+        .btn-check:hover {
+            background-color: #334155;
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+        }
+
+        .feedback-msg {
+            font-size: 0.88rem;
+            margin-top: 4px;
+            display: none;
+        }
+
+        .feedback-msg.show {
+            display: block;
+        }
+
+        .feedback-msg.good {
+            color: var(--accent-emerald);
+        }
+
+        .feedback-msg.bad {
+            color: var(--accent-crimson);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="header-card">
+        <span class="badge">B2–C1 Advanced • Vocabulary in Use Unit 44</span>
+        <h1>The Architecture of Modern Work</h1>
+        <p>Corporate Hierarchy, Labour Rights, and Employment Transitions • Grammar: Participle Clauses for Professional Register</p>
+    </div>
+
+    <!-- 1. WARM-UP -->
+    <div class="section-card">
+        <div class="section-header">
+            <svg class="svg-icon" viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg>
+            <div class="section-title">1. Warm-Up</div>
+        </div>
+
+        <div class="exercise">
+            <div class="exercise-title">Exercise 1.1: Work Culture & Career Models</div>
+            <div class="instruction">Discuss these questions with your tutor:</div>
+            <ul>
+                <li>Is the traditional "nine-to-five" model becoming obsolete, or does it still provide indispensable structure for professionals?</li>
+                <li>How do attitudes towards career stability differ between generations: why is frequent job-hopping increasingly normalised compared to lifelong tenure in one company?</li>
+                <li>What is the psychological difference between being a dedicated employee and developing "workaholism"? Where is the tipping point?</li>
+            </ul>
+        </div>
+
+        <div class="exercise">
+            <div class="exercise-title">Exercise 1.2: Classifying Occupations</div>
+            <div class="instruction">Categorize each role as a <b>Profession</b> (high-qualification/training), <b>Trade</b> (skilled manual craftsmanship), or <b>Unskilled Labour</b>:</div>
+            <ol>
+                <li>Civil engineer &rarr; [ <input type="text" size="14" data-ans="profession" placeholder="..."> ]</li>
+                <li>Carpenter &rarr; [ <input type="text" size="14" data-ans="trade" placeholder="..."> ]</li>
+                <li>Warehouse packer &rarr; [ <input type="text" size="14" data-ans="unskilled labour|unskilled labor|unskilled" placeholder="..."> ]</li>
+                <li>Chartered accountant &rarr; [ <input type="text" size="14" data-ans="profession" placeholder="..."> ]</li>
+            </ol>
+            <button class="btn-check" onclick="checkTask(this)">Check Answers</button>
+            <div class="feedback-msg"></div>
+        </div>
+    </div>
+
+    <!-- 2. VOCABULARY -->
+    <div class="section-card">
+        <div class="section-header">
+            <svg class="svg-icon" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+            <div class="section-title">2. Vocabulary: Corporate Hierarchy & Employment Transitions</div>
+        </div>
+
+        <div class="exercise">
+            <div class="exercise-title">Key Lexical Distinctions & Collocations</div>
+            <table class="vocab-table">
+                <thead>
+                    <tr>
+                        <th>Term / Collocation</th>
+                        <th>Definition / Professional Usage</th>
+                        <th>Russian Equivalent</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="word">executive</td>
+                        <td>A senior manager with significant decision-making and administrative authority.</td>
+                        <td>руководитель высшего звена</td>
+                    </tr>
+                    <tr>
+                        <td class="word">union representative</td>
+                        <td>An official representing workers' collective bargaining rights and dispute settlements.</td>
+                        <td>профсоюзный представитель</td>
+                    </tr>
+                    <tr>
+                        <td class="word">be made redundant</td>
+                        <td>Lose one's job because the post no longer exists (due to downsizing or corporate restructuring).</td>
+                        <td>попасть под сокращение штата</td>
+                    </tr>
+                    <tr>
+                        <td class="word">be dismissed / get the sack</td>
+                        <td>Be removed from employment due to misconduct or poor performance.</td>
+                        <td>быть уволенным (за проступок)</td>
+                    </tr>
+                    <tr>
+                        <td class="word">take on (responsibility/staff)</td>
+                        <td>Accept personal accountability for a project OR recruit additional personnel.</td>
+                        <td>брать на себя (ответственность/людей)</td>
+                    </tr>
+                    <tr>
+                        <td class="word">work on flexi-time</td>
+                        <td>Work a mandatory total number of hours with flexible starting and finishing times.</td>
+                        <td>работать по гибкому графику</td>
+                    </tr>
+                    <tr>
+                        <td class="word">go on strike</td>
+                        <td>Cease work collectively as a form of industrial protest.</td>
+                        <td>объявлять забастовку</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Vocab Practice 1 -->
+        <div class="exercise">
+            <div class="exercise-title">Exercise 2.1: Corporate Titles in Action</div>
+            <div class="instruction">Identify the exact title described: <em>[executive, supervisor, safety officer, union representative, civil servant]</em></div>
+            <ol>
+                <li>A person appointed to protect workers' collective interests during wage disputes with factory management: &rarr; <input type="text" data-ans="union representative" placeholder="..."></li>
+                <li>A government administrative employee working across state ministries: &rarr; <input type="text" data-ans="civil servant" placeholder="..."></li>
+                <li>A manager directly overseeing day-to-day operations and checking that staff perform tasks accurately: &rarr; <input type="text" data-ans="supervisor" placeholder="..."></li>
+                <li>An official tasked with preventing workplace hazards, industrial accidents, and machinery risks: &rarr; <input type="text" data-ans="safety officer" placeholder="..."></li>
+            </ol>
+            <button class="btn-check" onclick="checkTask(this)">Check Answers</button>
+            <div class="feedback-msg"></div>
+        </div>
+
+        <!-- Vocab Practice 2 -->
+        <div class="exercise">
+            <div class="exercise-title">Exercise 2.2: Redundancy vs. Dismissal</div>
+            <div class="instruction">Choose the accurate collocations: <i>[made redundant, dismissed / fired, laid off, on strike]</i></div>
+            <ol>
+                <li>Following the corporate merger, two regional offices closed and over 300 staff were ___________ . &rarr; <input type="text" data-ans="made redundant" placeholder="..."></li>
+                <li>He was instantly ___________ after leaking confidential company data to a competitor. &rarr; <input type="text" data-ans="dismissed / fired|dismissed|fired" placeholder="..."></li>
+                <li>Due to the seasonal decline in automotive manufacturing, temporary assembly workers were ___________ for three months. &rarr; <input type="text" data-ans="laid off" placeholder="..."></li>
+                <li>Public transport workers voted to ___________ after negotiations regarding pension reform collapsed. &rarr; go <input type="text" data-ans="on strike" placeholder="..."></li>
+            </ol>
+            <button class="btn-check" onclick="checkTask(this)">Check Answers</button>
+            <div class="feedback-msg"></div>
+        </div>
+
+        <!-- Vocab Practice 3 -->
+        <div class="exercise">
+            <div class="exercise-title">Exercise 2.3: Precision Prepositions & Fixed Phrases</div>
+            <div class="instruction">Complete the collocations with the correct prepositions: <em>[on, for, to, in]</em></div>
+            <ol>
+                <li>She refused to take ________ extra managerial responsibilities without a commensurate salary increase. &rarr; <input type="text" size="4" data-ans="on" placeholder="..."></li>
+                <li>Many young professionals struggle to make a decent living ________ publishing or journalism. &rarr; <input type="text" size="4" data-ans="in" placeholder="..."></li>
+                <li>After giving birth, she applied ________ six months of paid maternity leave. &rarr; <input type="text" size="4" data-ans="for" placeholder="..."></li>
+                <li>He has been ________ sick leave for three weeks following spinal surgery. &rarr; <input type="text" size="4" data-ans="on" placeholder="..."></li>
+            </ol>
+            <button class="btn-check" onclick="checkTask(this)">Check Answers</button>
+            <div class="feedback-msg"></div>
+        </div>
+    </div>
+
+    <!-- 3. READING -->
+    <div class="section-card">
+        <div class="section-header">
+            <svg class="svg-icon" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            <div class="section-title">3. Reading: The Great Re-Evaluation of Work</div>
+        </div>
+
+        <div class="text-box">
+            <p><strong>1. The Erosion of the Psychological Contract.</strong> For decades, the tacit agreement between white-collar employees and corporations was straightforward: unwavering loyalty and extensive overtime were traded for job security, gradual promotion, and comfortable retirement pensions. However, waves of aggressive cost-cutting and corporate restructuring have dismantled this paradigm. Having witnessed mass redundancies during economic downturns, contemporary workers no longer view corporate loyalty as a viable long-term insurance policy.</p>
+
+            <p><strong>2. The Rise of "Quiet Quitting".</strong> In response to pervasive burnout, a cultural shift known as "quiet quitting" has gained traction. Far from resigning outright, employees deliberately reject the hustle culture that demands perpetual availability. By performing strictly what is outlined in their employment contracts and clocking out punctually at five, they actively resist the expectation to take on uncompensated labour in hopes of distant career advancement.</p>
+
+            <p><strong>3. Autonomous Models & The Gig Economy.</strong> Simultaneously, skilled professionals are increasingly gravitating toward freelance arrangements and flexi-time consulting. While abandoning corporate life entails relinquishing statutory benefits such as paid sick leave and pension contributions, the autonomy to select clients and establish independent working hours offers unprecedented agency. Work is no longer perceived as an existential identity, but as a contractual exchange of expertise for capital.</p>
+        </div>
+
+        <div class="exercise">
+            <div class="exercise-title">Exercise 3.1: Close Analytical Reading</div>
+            <div class="instruction">Answer the questions according to the text:</div>
+            <ol>
+                <li>What historical guarantee did the traditional "psychological contract" offer employees in exchange for overtime? &rarr; <input type="text" style="width: 80%;" data-ans="job security and pensions|job security|security and promotion" placeholder="..."></li>
+                <li>What does "quiet quitting" mean in practice for everyday workplace behavior? &rarr; <input type="text" style="width: 80%;" data-ans="performing strictly contract duties|refusing uncompensated overtime|working only contract hours" placeholder="..."></li>
+                <li>What major trade-off do skilled workers accept when transitioning from corporate employment to freelance consultancy? &rarr; <input type="text" style="width: 80%;" data-ans="losing statutory benefits|loss of sick leave and pensions|relinquishing benefits" placeholder="..."></li>
+            </ol>
+            <button class="btn-check" onclick="checkTask(this)">Check Answers</button>
+            <div class="feedback-msg"></div>
+        </div>
+
+        <div class="exercise">
+            <div class="exercise-title">Exercise 3.2: Advanced Contextual Vocabulary in the Text</div>
+            <div class="instruction">Find words or phrases in the text corresponding to these definitions:</div>
+            <ol>
+                <li>Unspoken, understood without being stated directly (Paragraph 1): &rarr; <input type="text" data-ans="tacit" placeholder="..."></li>
+                <li>Spreading widely and deeply through an entire system (Paragraph 2): &rarr; <input type="text" data-ans="pervasive" placeholder="..."></li>
+                <li>Legally mandated by official law or regulation (Paragraph 3): &rarr; <input type="text" data-ans="statutory" placeholder="..."></li>
+            </ol>
+            <button class="btn-check" onclick="checkTask(this)">Check Answers</button>
+            <div class="feedback-msg"></div>
+        </div>
+    </div>
+
+    <!-- 4. GRAMMAR -->
+    <div class="section-card">
+        <div class="section-header">
+            <svg class="svg-icon" viewBox="0 0 24 24"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
+            <div class="section-title">4. Grammar: Participle Clauses for Professional Register</div>
+        </div>
+
+        <div class="theory-box">
+            <h4>Participle Clauses in Business & Formal Analysis</h4>
+            <p>Participle clauses replace lengthy conjunctions (<i>because, although, after, when</i>) to create concise, sophisticated prose.</p>
+            <p><strong>1. Present Participle (-ing):</strong> Active voice, expressing simultaneous action or cause.<br>
+            <em>Because they want to cut costs, firms reduce staff.</em> &rarr; <b>Wanting to cut costs</b>, firms reduce staff.</p>
+            <p><strong>2. Past Participle (-ed / V3):</strong> Passive voice, expressing condition or result.<br>
+            <em>When they were dismissed without notice, the workers protested.</em> &rarr; <b>Dismissed without notice</b>, the workers protested.</p>
+            <p><strong>3. Perfect Participle (Having + V3):</strong> Emphasizes that an action was completed <b>prior</b> to the main clause.<br>
+            <em>After she had worked on shifts for a decade, she transitioned to flexi-time.</em> &rarr; <b>Having worked on shifts for a decade</b>, she transitioned to flexi-time.</p>
+        </div>
+
+        <!-- Grammar Ex 1 -->
+        <div class="exercise">
+            <div class="exercise-title">Exercise 4.1: Transforming Conjunctions to Participles</div>
+            <div class="instruction">Rewrite using a suitable participle clause:</div>
+            <ol>
+                <li>Because she was made redundant unexpectedly, Sarah decided to launch her own consultancy.<br>
+                &rarr; <input type="text" style="width: 75%;" data-ans="made redundant unexpectedly, sarah decided to launch her own consultancy|having been made redundant unexpectedly, sarah decided to launch her own consultancy" placeholder="Made redundant unexpectedly, Sarah..."></li>
+                
+                <li>After the board had reviewed the quarterly losses, they voted to freeze executive bonuses.<br>
+                &rarr; <input type="text" style="width: 75%;" data-ans="having reviewed the quarterly losses, the board voted to freeze executive bonuses|having reviewed quarterly losses, the board voted to freeze executive bonuses" placeholder="Having reviewed the quarterly losses, the board..."></li>
+                
+                <li>Because employees recognize the symptoms of chronic burnout, they increasingly refuse unpaid overtime.<br>
+                &rarr; <input type="text" style="width: 75%;" data-ans="recognizing the symptoms of chronic burnout, employees increasingly refuse unpaid overtime|recognising the symptoms of chronic burnout, employees increasingly refuse unpaid overtime" placeholder="Recognizing the symptoms of chronic burnout, employees..."></li>
+            </ol>
+            <button class="btn-check" onclick="checkTask(this)">Check Answers</button>
+            <div class="feedback-msg"></div>
+        </div>
+
+        <!-- Grammar Ex 2 -->
+        <div class="exercise">
+            <div class="exercise-title">Exercise 4.2: Present vs. Perfect Participle Selection</div>
+            <div class="instruction">Choose the appropriate participle form: <i>[Operating / Having operated]</i> or <i>[Faced / Facing]</i>:</div>
+            <ol>
+                <li>(<i>Faced / Facing</i>) with imminent factory closure, the union representatives immediately called for industrial action. &rarr; <input type="text" data-ans="faced" placeholder="..."></li>
+                <li>(<i>Having worked / Working</i>) sixty-hour weeks for three consecutive months, the senior associate was forced to take medical leave. &rarr; <input type="text" data-ans="having worked" placeholder="..."></li>
+                <li>(<i>Knowing / Having known</i>) the company's precarious financial position, the employees were not surprised by the layoffs. &rarr; <input type="text" data-ans="knowing" placeholder="..."></li>
+            </ol>
+            <button class="btn-check" onclick="checkTask(this)">Check Answers</button>
+            <div class="feedback-msg"></div>
+        </div>
+
+        <!-- Grammar Ex 3 -->
+        <div class="exercise">
+            <div class="exercise-title">Exercise 4.3: Dangling Participle Error Identification</div>
+            <div class="instruction">One sentence contains a "dangling participle" (where the subject of the participle does not match the subject of the main clause). Identify the grammatically flawed sentence (<b>A</b> or <b>B</b>):</div>
+            <ol>
+                <li>
+                    <b>A:</b> Walking into the executive boardroom, the contracts were signed by the director.<br>
+                    <b>B:</b> Walking into the executive boardroom, the director signed the contracts.<br>
+                    &rarr; Flawed sentence: [ <input type="text" size="3" data-ans="a" placeholder="..."> ]
+                </li>
+            </ol>
+            <button class="btn-check" onclick="checkTask(this)">Check Answers</button>
+            <div class="feedback-msg"></div>
+        </div>
+    </div>
+
+    <!-- 5. SPEAKING -->
+    <div class="section-card">
+        <div class="section-header">
+            <svg class="svg-icon" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/></svg>
+            <div class="section-title">5. Speaking (Critical Discussion & Case Study)</div>
+        </div>
+
+        <div class="exercise">
+            <div class="exercise-title">Task 5.1: The Ethics of Downsizing & Restructuring</div>
+            <div class="instruction">Discuss with your tutor:</div>
+            <ul>
+                <li>When a profitable multinational company lays off thousands of workers to automate production or boost quarterly share prices, is this sound business strategy or an unethical breach of social responsibility?</li>
+                <li>What role should trade unions and state regulations play in protecting employees from abrupt redundancy?</li>
+                <li>Integrate target vocabulary: <i>made redundant, union representative, take on responsibility, statutory severance</i>.</li>
+            </ul>
+        </div>
+
+        <div class="exercise">
+            <div class="exercise-title">Task 5.2: The Boundaries of Professional Commitment (Debate)</div>
+            <div class="instruction">Take 1 minute to structure your points, then present a 2-minute argument defending one position:</div>
+            <ul>
+                <li><strong>Position A:</strong> Pushing beyond standard hours and taking initiative outside contract terms is indispensable for professional self-realisation and societal advancement. "Quiet quitting" breeds stagnation.</li>
+                <li><strong>Position B:</strong> Work is strictly a commercial transaction. Performing unpaid labour devalues professional boundaries, enables corporate exploitation, and precipitates systemic mental health crises.</li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const fields = document.querySelectorAll("input[type='text'], textarea");
+        fields.forEach((f, idx) => {
+            const saved = localStorage.getItem("work_unit44_field_" + idx);
+            if (saved !== null) f.value = saved;
+            f.addEventListener("input", () => {
+                localStorage.setItem("work_unit44_field_" + idx, f.value);
+            });
+        });
+    });
+
+    function cleanStr(s) {
+        return s.toLowerCase()
+                .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()?]/g, "")
+                .replace(/\s+/g, " ")
+                .trim();
+    }
+
+    function checkTask(btn) {
+        const container = btn.closest(".exercise");
+        const inputs = container.querySelectorAll("input[type='text']");
+        const feedback = container.querySelector(".feedback-msg");
+        let allOk = true;
+        let count = 0;
+
+        inputs.forEach(input => {
+            const possible = input.getAttribute("data-ans").split("|").map(cleanStr);
+            const val = cleanStr(input.value);
+            if (val.length > 0) count++;
+
+            if (possible.includes(val)) {
+                input.classList.remove("incorrect");
+                input.classList.add("correct");
+            } else {
+                input.classList.remove("correct");
+                input.classList.add("incorrect");
+                allOk = false;
+            }
+        });
+
+        feedback.classList.add("show");
+        if (allOk && count === inputs.length) {
+            feedback.className = "feedback-msg show good";
+            feedback.textContent = "All answers are correct and academically precise.";
+        } else {
+            feedback.className = "feedback-msg show bad";
+            feedback.textContent = "Some answers need correction. Check your spelling or grammatical form.";
+        }
+    }
+</script>
+
+</body>
+</html>
